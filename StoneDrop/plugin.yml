@@ -1,0 +1,10 @@
+name: StoneDrop
+version: 0.1
+main: com.WindSkull.Main.Core
+commands:
+   drop:
+      description: Drop admin command
+      permission: drop.admin
+permissions:
+  drop.admin:
+     default: op

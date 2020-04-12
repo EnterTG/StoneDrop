@@ -31,17 +31,32 @@ public class LuckyEnchantData
 	private final LuckyEnchantDataSet[] luckyLevels = new LuckyEnchantDataSet[]
 		{
 			new LuckyEnchantDataSet()
-			.addWeightPiece(80d, new LuckyEnchantDataPiece("stone", "Kamieñ"))
-			.addWeightPiece(15d, new LuckyEnchantDataPiece("coal", "Wêgiel"))
-			.addWeightPiece(5d, new LuckyEnchantDataPiece("iron_ore", "¯elazo")),
+			.addWeightPiece(57d, new LuckyEnchantDataPiece("stone", "Kamien"))
+			.addWeightPiece(12d, new LuckyEnchantDataPiece("coal", "Wegiel"))
+			.addWeightPiece(9d, new LuckyEnchantDataPiece("iron_ore", "Zelazo"))
+			.addWeightPiece(8d, new LuckyEnchantDataPiece("gold_ore", "Zloto"))
+			.addWeightPiece(5d, new LuckyEnchantDataPiece("redstone", "Redstone"))
+			.addWeightPiece(5d, new LuckyEnchantDataPiece(Material.LAPIS_LAZULI.toString(), "Lapis Lazuli"))
+			.addWeightPiece(3d, new LuckyEnchantDataPiece("DIAMOND", "Diament"))
+			.addWeightPiece(1d, new LuckyEnchantDataPiece("EMERALD", "Szmaragd")),
 			new LuckyEnchantDataSet()
-			.addWeightPiece(50d, new LuckyEnchantDataPiece("stone", "Kamieñ"))
-			.addWeightPiece(25d, new LuckyEnchantDataPiece("coal", "Wêgiel"))
-			.addWeightPiece(15d, new LuckyEnchantDataPiece("iron_ore", "¯elazo"))
-			.addWeightPiece(10d, new LuckyEnchantDataPiece("diamond", "Diament")),
+			.addWeightPiece(42d, new LuckyEnchantDataPiece("stone", "Kamien"))
+			.addWeightPiece(18d, new LuckyEnchantDataPiece("coal", "Wegiel"))
+			.addWeightPiece(15d, new LuckyEnchantDataPiece("iron_ore", "Zelazo"))
+			.addWeightPiece(10d, new LuckyEnchantDataPiece("gold_ore", "Zloto"))
+			.addWeightPiece(5d, new LuckyEnchantDataPiece("redstone", "Redstone"))
+			.addWeightPiece(5d, new LuckyEnchantDataPiece(Material.LAPIS_LAZULI.toString(), "Lapis Lazuli"))
+			.addWeightPiece(4d, new LuckyEnchantDataPiece("diamond", "Diament"))
+			.addWeightPiece(1d, new LuckyEnchantDataPiece("emerald", "Szmaragd")),
 			new LuckyEnchantDataSet()
-			.addWeightPiece(100d, new LuckyEnchantDataPiece("diamond", "Diament"))
-			
+			.addWeightPiece(33d, new LuckyEnchantDataPiece("stone", "Kamien"))
+			.addWeightPiece(18d, new LuckyEnchantDataPiece("coal", "Wegiel"))
+			.addWeightPiece(15d, new LuckyEnchantDataPiece("iron_ore", "Zelazo"))
+			.addWeightPiece(10d, new LuckyEnchantDataPiece("gold_ore", "Zloto"))
+			.addWeightPiece(8d, new LuckyEnchantDataPiece("redstone", "Redstone"))
+			.addWeightPiece(8d, new LuckyEnchantDataPiece(Material.LAPIS_LAZULI.toString(), "Lapis Lazuli"))
+			.addWeightPiece(6d, new LuckyEnchantDataPiece("diamond", "Diament"))
+			.addWeightPiece(2d, new LuckyEnchantDataPiece("emerald", "Szmaragd"))
 		};
 	
 	public LuckyEnchantDataSet[] getLuckyLevel()
@@ -91,7 +106,7 @@ public class LuckyEnchantData
 		@Override
 		public String toString()
 		{
-			return "LuckyEnchantDataPiece[id: "+ nameid + " name: " + name+"]";
+			return "LuckyEnchantDataPiece[id: "+ nameid + " name: " + name+ " Material: " + Material.matchMaterial(nameid,false)+"]";
 		}
 	}
 	public class LuckyEnchantDataSet

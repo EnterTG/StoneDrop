@@ -1,10 +1,15 @@
 name: StoneDrop
 version: 0.1
+api-version: 1.15 
 main: com.WindSkull.Main.Core
 commands:
    drop:
+      description: Drop command
+      usage: /<command>
+   dropadmin:
       description: Drop admin command
       permission: drop.admin
+      usage: /<command> drop/megadrop
 permissions:
   drop.admin:
      default: op

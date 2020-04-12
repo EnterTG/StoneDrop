@@ -18,17 +18,19 @@ public class BlockBreakListener implements Listener{
 	public static boolean megaDrop = false;
 	public static boolean drop = true;
 	
-	private static final List<Material> drops = Arrays.asList(Material.STONE,Material.IRON_ORE);
+	private static final List<Material> drops = Arrays.asList(Material.STONE,Material.COAL_ORE,Material.IRON_ORE,
+			Material.GOLD_ORE,Material.DIAMOND_ORE,Material.EMERALD_ORE,Material.LAPIS_ORE,Material.REDSTONE_ORE);
 	
 	@EventHandler
 	public void onBlockBreak(BlockBreakEvent e)
 	{
-		e.setDropItems(false);
+		
 		if(drop)
 		{
 			Block block = e.getBlock();
 			if(drops.contains(block.getType()))
 			{
+				e.setDropItems(false);
 				ItemStack item = e.getPlayer().getInventory().getItemInMainHand();
 				LuckyEnchantData luck = LuckyEnchantData.getLuckyEnchantData();
 				

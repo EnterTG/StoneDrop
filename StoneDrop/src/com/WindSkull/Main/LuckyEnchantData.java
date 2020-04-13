@@ -122,7 +122,7 @@ public class LuckyEnchantData
 			if(weight > weightMax)
 				weightMax = weight;
 			map.put(weight, piece);
-			System.out.println(toString());
+			//System.out.println(toString());
 			return this;
 		}
 		

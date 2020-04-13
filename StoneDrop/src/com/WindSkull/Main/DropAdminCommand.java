@@ -12,7 +12,7 @@ public class DropAdminCommand implements CommandExecutor{
 		
 		if(args.length > 0)
 		{
-			if(args[0].equalsIgnoreCase("magedrop"))
+			if(args[0].equalsIgnoreCase("megadrop"))
 			{
 				BlockBreakListener.megaDrop = !BlockBreakListener.megaDrop;
 				sender.sendMessage("Mega drop: " + (BlockBreakListener.megaDrop ? "On" : "Off"));

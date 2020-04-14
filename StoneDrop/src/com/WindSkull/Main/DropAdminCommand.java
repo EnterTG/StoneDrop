@@ -7,6 +7,10 @@ import org.bukkit.command.CommandSender;
 public class DropAdminCommand implements CommandExecutor{
 
 	
+	private Core core;
+	public DropAdminCommand(Core c ) {
+		core = c;
+	}
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args)  {
 		
@@ -25,9 +29,19 @@ public class DropAdminCommand implements CommandExecutor{
 				sender.sendMessage("Drop: " + (BlockBreakListener.drop ? "On" : "Off"));
 				return true;
 			}
-			else if(args[0].equalsIgnoreCase("gui"))
+			else if(args[0].equalsIgnoreCase("reload"))
 			{
-				
+				try 
+				{
+					LuckyEnchantData.getLuckyEnchantData().loadData(core);
+				} 
+				catch (Exception e) 
+				{
+					e.printStackTrace();
+					System.exit(0);
+				}
+				sender.sendMessage("Drop reloaded");
+				return true;
 			}
 				
 		}

@@ -9,7 +9,7 @@ commands:
    dropadmin:
       description: Drop admin command
       permission: drop.admin
-      usage: /<command> drop/megadrop
+      usage: /<command> drop/megadrop/reload
 permissions:
   drop.admin:
      default: op

@@ -1,6 +1,7 @@
 package com.WindSkull.Main;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.NavigableMap;
 import java.util.Random;
@@ -9,10 +10,9 @@ import java.util.stream.Collectors;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-
-import com.mojang.datafixers.util.Pair;
 
 @SuppressWarnings("unused")
 public class LuckyEnchantData 
@@ -28,7 +28,31 @@ public class LuckyEnchantData
 		return singelton;
 	}
 	
-	private final LuckyEnchantDataSet[] luckyLevels = new LuckyEnchantDataSet[]
+	public void loadData(Core c) throws Exception
+	{
+		c.saveResource("config.yml", false);
+		FileConfiguration fc= c.getConfig();
+		List<String> drops = (List<String>) fc.getList("drops");
+		luckyLevels = new LuckyEnchantDataSet[drops.size()];
+		
+		
+		for(int i = 0; i < luckyLevels.length;i++)
+		{
+			LuckyEnchantDataSet leds =new LuckyEnchantDataSet();
+			Iterator<String> drop =(Iterator<String>) fc.getList(drops.get(i)).iterator(); //drops.get(i).iterator();
+			while(drop.hasNext())
+			{
+				String[] dropChunk = drop.next().split(":");
+				Material m = Material.matchMaterial(dropChunk[0]);
+				if(m == null) throw new NullPointerException(dropChunk[0]);
+				Double value = Double.parseDouble(dropChunk[2]);
+				leds.addWeightPiece(value, new LuckyEnchantDataPiece(dropChunk[0],ChatColor.translateAlternateColorCodes('&', dropChunk[1])));
+			}
+			luckyLevels[i] = leds;
+		}
+	}
+	
+	private LuckyEnchantDataSet[] luckyLevels;/* = new LuckyEnchantDataSet[]
 		{
 			new LuckyEnchantDataSet()
 			.addWeightPiece(57d, new LuckyEnchantDataPiece("stone", "Kamien"))
@@ -57,7 +81,7 @@ public class LuckyEnchantData
 			.addWeightPiece(8d, new LuckyEnchantDataPiece(Material.LAPIS_LAZULI.toString(), "Lapis Lazuli"))
 			.addWeightPiece(6d, new LuckyEnchantDataPiece("diamond", "Diament"))
 			.addWeightPiece(2d, new LuckyEnchantDataPiece("emerald", "Szmaragd"))
-		};
+		};*/
 	
 	public LuckyEnchantDataSet[] getLuckyLevel()
 	{
@@ -84,6 +108,7 @@ public class LuckyEnchantData
 		
 		private ItemStack createItemStack()
 		{
+			
 			ItemStack i = new ItemStack(Material.matchMaterial(nameid),1);
 			ItemMeta im = i.getItemMeta();
 			im.setDisplayName(name.replace("&", "§"));

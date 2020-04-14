@@ -1,0 +1,8 @@
+drops:
+ - "Drop_0"
+ - "Drop_1"
+Drop_0:
+ - "stone:Kamien:54"
+ 
+Drop_1:
+ - "stone:Kamien:44"
